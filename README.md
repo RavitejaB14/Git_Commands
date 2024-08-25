@@ -8,7 +8,7 @@ When working with GitHub repository, you'll often need to Username and Password 
 
 Alternate Option is to Use SSH Key to identify yourself that doesn't require you to enter your username and password each time.
 
-SSH protocol: you can connect and Authentiate to remote servers and services.
+# SSH protocol: you can connect and Authentiate to remote servers and services.
 
 Below are the steps:
 
@@ -35,5 +35,8 @@ Step 4: Testing your SSH Connection
     # > Hi USERNAME! You've successfully authenticated, but GitHub does not
     #> provide shell access.
 
+Visualizing GIT commands: https://git-school.github.io/visualizing-git/
+
 References: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
+
 

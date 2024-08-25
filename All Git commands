@@ -1,0 +1,289 @@
+# GIT is Version control system
+
+# Install Git in MAC
+
+https://git-scm.com/download/mac
+
+# To check the GIT Configuration files
+
+git config --global user.name "****"
+git config --global user.email "****@gmail.com"
+
+git config  --list --show-origin
+
+# To remove the specific setting for a specific config
+
+git config --global --unset user.name
+
+# Remove a specific section
+
+git config --global --remove-section user
+
+# To check the GIT Version
+
+git --version
+
+# To add files to Staging Area
+
+git add .
+
+# To remove files from Staging Area
+
+git rm --cached <filename>
+
+or 
+
+git restore --staged <fileName>
+
+# To commit the file to local Directory
+
+git commit -m "<Commit Message>"
+
+# to check the logs in Git
+
+git log
+
+# Three stages in GIT
+
+Working Area
+Staging Area
+Local repository Area
+
+git diff -> Difference between Working Area and Staging Area
+git diff --staged -> Difference between Staging Area and Local repository Area
+git diff HEAD -> Difference between Working Area and Local repository Area
+
+
+
+# When u commit the file, 20 Characters SHA1 Code will be generated. To Check how data is stored inside Hash
+
+git cat-file <commit id> -p
+
+# To Discard the Changes in Working Directory
+
+git restore <filename>
+
+# To Check list of branches
+
+git branch
+
+# To check contents of the branch
+
+cat .git/refs/heads/master
+
+# how GIT Identifies that we are in specific branch
+
+cat .git/HEAD 
+
+# To change the branch name
+
+git branch -m <new_branch>
+
+# To delete the branch in GIT
+
+git branch -D <new_branch>
+
+# To Create a branch
+
+git checkout -b <new_branchName>
+or
+git switch -c <new_branchName>
+
+only difference is switch cannot work on commit id's where as, we can go to partitcular commits with "git checkout head~2"
+
+# git merge and git rebase
+
+git merge will preverse the history
+git rebase will not
+
+# Interactive rebasing
+
+git rebase -i HEAD~2
+or
+git rebase -i <branchname>
+
+# Change or Modify the last or latest commit using amend
+
+git commit --amend
+or 
+git commit --amend $date="(date -R)"
+
+# Git Cherrypick: Used if you want  to apply particular commit  from one branch to another
+
+git cherry-pick <commit-id>
+
+# git reset command
+
+Three options:
+
+--hard: moves the files both from working area and staging area
+--mixed(default): moves the files from staging area to working area
+--soft: does not move the files from working area and staging area
+
+git reset <options> <commit>
+
+# git stash: enables you to switch branches without committing the current branch
+
+git stash
+
+git stash list  # To list all the commit id's
+
+git stash pop # gives the recent stash commit 
+
+git stash save "stash message"
+
+git stash apply <stash ID>  # this will not delete in the stash list
+
+git stash show -p  # To see the changes in stash
+or
+git stash show stash@{1} -p
+
+git stash drop stash@{1} # will drop the stash
+
+git stash branch <branchname> stash@{1}
+
+git stash clear
+
+# if want to go two commits behind
+
+git checkout HEAD~2
+
+# revert only a particular file
+
+git checkout head <filename>
+or
+git checkout -- <filename>
+
+# To navigate to previous commit of a particalar file using git restore
+
+git restore --source HEAD~2 <filename>
+
+# If we want to revert the commit, can use git revert and git reset
+
+git reset --hard head~1 -> this is remove the change done in head~1 completely in log
+
+git revert <commit-id> -> New revert commit is added in the git log and if we want to remove any commit changes in between.
+
+# To check the remote
+
+git remote -v
+
+# To add remote origin
+
+git remote add origin <git url>
+
+# To change the remote origin name
+
+git remote rename origin githuburl
+
+# Git initialization
+
+git init
+
+# Pushing the changes to git master
+
+git push origin master
+
+# Pushing the changes to another branch
+# Changes in the local branch will be push to remotebranch, not in localbranch
+
+git push <remote> <localbranch>:<remotebranch>
+
+# Set Upstream branch
+
+git push --set-upstream origin <branchname>
+
+# -u option in GIT PUSH
+# Allows us to set the upstream of the branch we are pushing. It creates the link between local branch to remote
+# This will set the upstream and push the changes to remote
+
+git push -u origin master
+
+# List all the git commits
+
+git log --oneline
+
+# To Check the remote branches present
+
+git branch -r
+
+# if you have the remote branch origin/branch1 and this branch is not there in local branch
+# Below command will link local branch with remote branch
+
+git switch branch1
+
+
+# Get all the changes from remote GIT
+
+git fetch <remote>
+git fetch <remote> <branch>
+
+# GIT PULL
+
+git pull = git fetch + git merge
+
+# git fetch: updates the remote tracking branch with lastest changes from remote repository.
+
+# git merge: update my current branch with whatever changes are on the remote tracking branch. 
+
+# Semantic versioning:
+
+V4.2.1
+
+Patch Release (1) -> Patch releases normally do not contain new features or significant changes. They signify bugfixes and other changes that donot  impact how the code is used
+
+Minor Release (2) -> Minor releases signify that new features or functionality that have been added. But the project still have backwards compatibility. No Breaking changes. New functionality is optional.
+
+Max Release (4) -> It will have significant changes that is no longer backward compatible.
+
+# Print all the git tags
+
+git tag
+
+git tag -l "*v12.0.1*"
+
+git checkout "<tag>"
+
+git diff v1 v2
+
+# Create git tag 
+
+git tag v1.0.0
+
+git show v1.0.0
+
+git push origin v1.0.0
+
+git push origin --tags
+
+# Reflogs: Reference logs . It keeps track all your git activity.
+
+git reflog show head
+git reflog show master
+
+# Go to the particular commits
+
+git checkout head~2
+or
+git reflog show HEAD@{2}
+or
+git reflog show master@{one.day.ago}
+
+
+# To remove the commit 
+
+git reset <commitID> --hard
+
+# To configure alias in git
+
+git config --global alias.br "branch"  #git br
+
+# To check the list of config/Alias
+
+git config --show-origin --global --list 
+
+
+
+
+
+
